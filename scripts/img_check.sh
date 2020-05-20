@@ -556,47 +556,10 @@ getDistro
 echo -en "\n\e[1mDistribution:\e[0m ${OS}\n"
 echo -en "\e[1mVersion:\e[0m ${VER}\n\n"
 
-ost=0
-osv=0
-
-if [[ $OS == "Ubuntu" ]]; then
-        ost=1
-    if [[ $VER == "20.04" ]]; then
-        osv=1
-    elif [[ $VER == "18.04" ]]; then
-        osv=1
-    elif [[ $VER == "16.04" ]]; then
-        osv=1
-    else
-        osv=0
-    fi
-
-elif [[ "$OS" =~ Debian.* ]]; then
-    ost=1
-    case "$VER" in
-        9)
-            osv=1
-            ;;
-        10)
-            osv=1
-            ;;
-        *)
-            osv=2
-            ;;
-    esac
-
-elif [[ $OS == "CentOS Linux" ]]; then
-        ost=1
-     if [[ $VER == "7" ]]; then
-        osv=1
-    elif [[ $VER == "6" ]]; then
-        osv=1
-    else
-        osv=2
-    fi
-else
-    ost=0
-fi
+OS="CentOS Linux"
+VER=7
+ost=1
+osv=1
 
 if [[ $ost == 1 ]]; then
     echo -en "\e[32m[PASS]\e[0m Supported Operating System Detected: ${OS}\n"
